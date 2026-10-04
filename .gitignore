@@ -1,0 +1,22 @@
+*.iml
+.gradle
+/local.properties
+
+# Android Studio
+.idea/
+
+# Build files
+/build
+/app/build
+/captures
+
+# Native build
+.externalNativeBuild
+.cxx
+
+# OS files
+.DS_Store
+
+# JVM crash logs
+hs_err_pid*.log
+replay_pid*.log
