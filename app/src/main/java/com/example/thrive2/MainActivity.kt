@@ -67,7 +67,9 @@ val LightGreen = Color(0xFFE8F8F1)
 val LightPurple = Color(0xFFF0EAFF)
 
 // ============================================================
-// Data models are defined in Models.kt.\n\n// MAIN APP
+// Data models are defined in Models.kt.
+
+// MAIN APP
 // ============================================================
 
 @Composable
