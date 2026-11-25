@@ -274,22 +274,13 @@ fun ThriveApp() {
                         transactions =
                             transactions + transaction
 
-                        if (transaction.type == "Income") {
-
-                            if (transaction.isCash) {
-                                cashBalance += transaction.amount
-                            } else {
-                                bankBalance += transaction.amount
-                            }
-
-                        } else {
-
-                            if (transaction.isCash) {
-                                cashBalance -= transaction.amount
-                            } else if (!transaction.isTransfer) {
-                                bankBalance -= transaction.amount
-                            }
-                        }
+                        val updatedBalances = applyTransactionToBalances(
+                            bankBalance = bankBalance,
+                            cashBalance = cashBalance,
+                            transaction = transaction
+                        )
+                        bankBalance = updatedBalances.first
+                        cashBalance = updatedBalances.second
                     },
 
                     onAddFinancialGoal = { goal ->
