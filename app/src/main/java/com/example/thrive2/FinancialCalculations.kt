@@ -36,7 +36,8 @@ fun reverseTransactionFromBalances(
 ): Pair<Double, Double> {
     val inverse = transaction.copy(
         type = if (transaction.type == "Income") "Expense" else "Income",
-        isTransfer = transaction.isTransfer
+        isTransfer = transaction.isTransfer,
+        isCash = if (transaction.isTransfer) !transaction.isCash else transaction.isCash
     )
     return applyTransactionToBalances(bankBalance, cashBalance, inverse)
 }
