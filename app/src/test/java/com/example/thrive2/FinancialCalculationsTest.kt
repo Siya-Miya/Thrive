@@ -46,7 +46,18 @@ class FinancialCalculationsTest {
     @Test fun replaceExpenseWithIncomeAppliesNetChange() {
         val old = tx()
         val new = tx(type = "Income", amount = 80.0)
-        val result = replaceTransactionBalances(1000.0, 200.0, old, new)
-        assertEquals(1080.0, result.first, 0.001); assertEquals(200.0, result.second, 0.001)
+
+        // Simulate the original expense already affecting the balance
+        val currentBalances = applyTransactionToBalances(1000.0, 200.0, old)
+
+        val result = replaceTransactionBalances(
+            currentBalances.first,
+            currentBalances.second,
+            old,
+            new
+        )
+
+        assertEquals(1080.0, result.first, 0.001)
+        assertEquals(200.0, result.second, 0.001)
     }
 }
